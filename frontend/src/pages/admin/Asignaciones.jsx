@@ -76,7 +76,7 @@ export default function Asignaciones() {
     try {
       await docentesService.eliminarAsignacion(id);
       loadAsignaciones(filters.periodo_id, filters.docente_id);
-      setMessage({ type: 'success', text: 'Asignaciรณn eliminada' });
+      setMessage({ type: 'success', text: 'Asignación eliminada' });
     } catch (err) {
       setMessage({ type: 'error', text: err.response?.data?.message || 'Error al eliminar' });
     }
@@ -87,10 +87,10 @@ export default function Asignaciones() {
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
         <div className="flex items-center gap-3">
           <Link2 className="w-8 h-8 text-primary-800" />
-          <h1 className="text-2xl font-bold text-gray-800">Asignaciรณn de Docentes</h1>
+          <h1 className="text-2xl font-bold text-gray-800">Asignación de Docentes</h1>
         </div>
         <button onClick={() => setShowForm(true)} className="btn-primary flex items-center gap-2">
-          <Plus className="w-4 h-4" /> Nueva Asignaciรณn
+          <Plus className="w-4 h-4" /> Nueva Asignación
         </button>
       </div>
 
@@ -121,7 +121,7 @@ export default function Asignaciones() {
       {showForm && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
           <div className="bg-white rounded-xl w-full max-w-lg animate-fadeIn">
-            <div className="p-6 border-b"><h2 className="text-xl font-semibold">Nueva Asignaciรณn</h2></div>
+            <div className="p-6 border-b"><h2 className="text-xl font-semibold">Nueva Asignación</h2></div>
             <form onSubmit={handleSubmit} className="p-6 space-y-4">
               <div>
                 <label className="label">Docente *</label>
@@ -131,7 +131,7 @@ export default function Asignaciones() {
                 </select>
               </div>
               <div>
-                <label className="label">Unidad Didรกctica *</label>
+                <label className="label">Unidad Didáctica *</label>
                 <select value={formData.unidad_didactica_id} onChange={(e) => setFormData({ ...formData, unidad_didactica_id: e.target.value })} className="input" required>
                   <option value="">Seleccionar...</option>
                   {unidades.map(u => <option key={u.id} value={u.id}>{`${u.codigo} - ${u.nombre} (Ciclo ${u.ciclo})`}</option>)}
@@ -154,12 +154,12 @@ export default function Asignaciones() {
                 </div>
               </div>
               <div>
-                <label className="label">Secciรณn</label>
+                <label className="label">Sección</label>
                 <input type="text" value={formData.seccion} onChange={(e) => setFormData({ ...formData, seccion: e.target.value })} className="input" placeholder="A" />
               </div>
               <div className="flex justify-end gap-3 pt-4">
                 <button type="button" onClick={() => setShowForm(false)} className="btn-ghost">Cancelar</button>
-                <button type="submit" className="btn-primary">Crear Asignaciรณn</button>
+                <button type="submit" className="btn-primary">Crear Asignación</button>
               </div>
             </form>
           </div>
@@ -176,7 +176,7 @@ export default function Asignaciones() {
           <div className="table-container">
             <table className="table">
               <thead>
-                <tr><th>Docente</th><th>Unidad Didรกctica</th><th>Ciclo</th><th>Periodo</th><th>Turno</th><th>Secciรณn</th><th>Acciones</th></tr>
+                <tr><th>Docente</th><th>Unidad Didáctica</th><th>Ciclo</th><th>Periodo</th><th>Turno</th><th>Sección</th><th>Acciones</th></tr>
               </thead>
               <tbody>
                 {asignaciones.length === 0 ? (
